@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Swing Explorer Plug-in
+Bundle-SymbolicName: org.swingexplorer.eclipseplugin;singleton:=true
+Bundle-Version: @version@
+Bundle-Activator: org.swingexplorer.eclipseplugin.Activator
+Bundle-Vendor: @vendor@
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui.ide;bundle-version="[3.2.0,4.0.0)",org.
+ eclipse.ui.views;bundle-version="[3.2.0,4.0.0)",org.eclipse.jface.tex
+ t;bundle-version="[3.2.0,4.0.0)",org.eclipse.ui.workbench.texteditor;
+ bundle-version="[3.2.0,4.0.0)",org.eclipse.ui.editors;bundle-version=
+ "[3.2.0,4.0.0)",org.eclipse.ui;bundle-version="[3.2.0,4.0.0)",org.ecl
+ ipse.core.expressions;bundle-version="[3.2.0,4.0.0)",org.eclipse.core
+ .resources;bundle-version="[3.2.0,4.0.0)",org.eclipse.core.runtime.co
+ mpatibility;bundle-version="[3.1.0,4.0.0)",org.eclipse.debug.core;bun
+ dle-version="[3.2.0,4.0.0)",org.eclipse.debug.ui;bundle-version="[3.2
+ .0,4.0.0)",org.eclipse.jdt.core;bundle-version="[3.2.0,4.0.0)",org.ec
+ lipse.jdt.ui;bundle-version="[3.2.0,4.0.0)",org.eclipse.core.runtime;
+ bundle-version="[3.1.0,4.0.0)",org.eclipse.jdt.launching;bundle-versi
+ on="[3.2.0,4.0.0)",org.eclipse.jdt.debug.ui;bundle-version="[3.2.0,4.
+ 0.0)",org.eclipse.jdt.junit.runtime;bundle-version="[3.2.0,4.0.0)",or
+ g.eclipse.compare;bundle-version="[3.2.0,4.0.0)",org.eclipse.ltk.core
+ .refactoring;bundle-version="[3.2.0,4.0.0)",org.eclipse.core.variable
+ s;bundle-version="[3.1.0,4.0.0)"
+Eclipse-LazyStart: true
+Bundle-ClassPath: swexplugin.jar

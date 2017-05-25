@@ -1,0 +1,97 @@
+<project name="swing-explorer-eclipse-plugin" default="pack" basedir=".">
+
+  <!-- common properties -->
+  <loadproperties srcFile="../build.properties"/>
+
+
+  <property name="jar.file"  value="org.swingexplorer.eclipseplugin_${build.version}.jar" />
+  <property name="bundle.jar.file" value="swexplugin.jar" />
+  <property name="project.dir" location="${basedir}"/>
+  <property name="build.dir"   value="${project.dir}/target" />
+  <property name="classes.dir"   value="${project.dir}/bin" />
+  <property name="src.dir"     value="${project.dir}/src" />
+
+
+  <!-- Compilation classpath -->
+  <path id="classpath">
+    <fileset dir="${lib.dir}" includes="*.jar"/>
+  </path>
+
+  <!-- ========================================= -->
+  <!-- Deletes directories created in this build -->
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Creates directories required in build process -->
+  <target name="init">
+	<mkdir dir="${build.dir}"/>
+    <mkdir dir="${classes.dir}"/>
+    <tstamp/>
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Compile project sources                       -->
+  <target name="compile" depends="init">
+	<!-- Currently we compile from Eclipse -->
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Cleans this project and recompiles sources    -->
+  <target name="recompile" depends="clean,compile">
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Packs classes into Jars -->
+  <target name="pack" depends="compile">
+  
+	<tstamp />
+
+	<filter token="version" value="${build.version}" />
+    <filter token="vendor" value="${vendor}" />
+
+	<!-- Update files with version number -->
+	<copy file="${project.dir}/META-INF/MANIFEST.MF_template"
+		tofile="${project.dir}/META-INF/MANIFEST.MF" filtering="true"
+		overwrite="true" />
+
+	<!-- Pack plugin bundle classes into swexplugin.jar -->
+	<delete file="${project.dir}/${bundle.jar.file}" />
+
+	<jar file="${build.dir}/${bundle.jar.file}">
+		<manifest>
+			<attribute name="Main-Class" value="org.swingexplorer.Launcher" />
+			<attribute name="Implementation-Vendor" value="${vendor}" />
+			<attribute name="Implementation-Title" value="${ant.project.name} plugin" />
+			<attribute name="Implementation-Version" value="${build.version}" />
+			<attribute name="Date" value="${TODAY}" />
+		</manifest>
+		<fileset dir="${project.dir}/bin">
+			<include name="**/*.*" />
+		</fileset>
+	</jar>
+
+    <!-- sign bundle -->
+    <signjar jar="${build.dir}/${bundle.jar.file}" alias="mykey" keystore="${keystore.file.path}" storepass="${keystore.password}"/>
+
+	<!-- Pack plugin itself -->
+	<jar file="${build.dir}/${jar.file}" manifest="${project.dir}/META-INF/manifest.mf">
+
+		<fileset dir="${project.dir}">
+			<include name="swex18x18.png" />
+			<include name="plugin.xml" />
+		</fileset>
+		<fileset file="${build.dir}/${bundle.jar.file}"/>
+		<fileset file="../swing-explorer-agent/target/swag.jar"/>
+		<fileset file="../swing-explorer-core/target/swexpl.jar"/>
+	</jar>
+
+	<delete file="${build.dir}/${bundle.jar.file}"/>
+  </target>
+
+</project>

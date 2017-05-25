@@ -1,0 +1,79 @@
+<project name="swing-explorer-eclipse-feature" default="pack" basedir=".">
+
+  <!-- common properties -->
+  <loadproperties srcFile="../build.properties"/>
+
+
+  <property name="jar.file"  value="org.swingexplorer.feature_${build.version}.jar" />
+  <property name="project.dir" location="${basedir}"/>
+  <property name="build.dir"   value="${project.dir}/target" />
+  <property name="classes.dir"   value="${project.dir}/bin" />
+  <property name="src.dir"     value="${project.dir}/src" />
+
+
+  <!-- Compilation classpath -->
+  <path id="classpath">
+    <fileset dir="${lib.dir}" includes="*.jar"/>
+  </path>
+
+  <!-- ========================================= -->
+  <!-- Deletes directories created in this build -->
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Creates directories required in build process -->
+  <target name="init">
+	<mkdir dir="${build.dir}"/>
+    <mkdir dir="${classes.dir}"/>
+    <tstamp/>
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Compile project sources                       -->
+  <target name="compile" depends="init">
+	<!-- Currently we compile from Eclipse -->
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Cleans this project and recompiles sources    -->
+  <target name="recompile" depends="clean,compile">
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Packs classes into Jars -->
+  <target name="pack" depends="compile">
+  
+	<tstamp />
+
+	<filter token="version" value="${build.version}" />
+    <filter token="vendor" value="${vendor}" />
+
+	<copy file="${project.dir}/feature.xml_template"
+		tofile="${project.dir}/feature.xml" filtering="true"
+		overwrite="true" />
+
+	<!-- Pack feature -->
+	<jar
+		file="${build.dir}/${jar.file}">
+		<manifest>
+			<attribute name="Main-Class" value="org.swingexplorer.Launcher" />
+			<attribute name="Implementation-Vendor" value="${vendor}" />
+			<attribute name="Implementation-Title" value="${ant.project.name}" />
+			<attribute name="Implementation-Version" value="${build.version}" />
+			<attribute name="Date" value="${TODAY}" />
+		</manifest>
+		<fileset dir="${project.dir}">
+			<include name="feature.xml" />
+		</fileset>
+	</jar>
+
+    <signjar jar="${build.dir}/${jar.file}" alias="mykey" keystore="${keystore.file.path}" storepass="${keystore.password}"/>
+  </target>
+
+</project>

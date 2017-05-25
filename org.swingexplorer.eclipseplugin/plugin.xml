@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="org.swingexplorer.eclipseplugin.LaunchConfigurationDelegate"
+            id="org.swingexplorer.eclipseplugin.launchconfig"
+            modes="run, debug"
+            name="Swing Explorer"
+            sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
+            sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">
+         <fileExtension
+               default="false"
+               extension="java"/>
+         <fileExtension
+               default="false"
+               extension="class"/>
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="org.swingexplorer.eclipseplugin.LaunchConfigurationTabGroup"
+            helpContextId="org.swingexplorer.tab_group"
+            id="org.swingexplorer.eclipseplugin.launchConfigurationTabGroup"
+            type="org.swingexplorer.eclipseplugin.launchconfig">
+         <launchMode
+               description="Debug with Swing Explorer "
+               mode="debug"
+               perspective="org.eclipse.debug.ui.DebugPerspective"/>
+         <launchMode
+               description="Run With Swing Explorer"
+               mode="run"/>
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="org.swingexplorer.eclipseplugin.launchconfig"
+            icon="swex18x18.png"
+            id="org.swingexplorer.eclipseplugin.launchimage"/>
+   </extension>
+
+</plugin>

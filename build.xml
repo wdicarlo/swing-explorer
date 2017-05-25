@@ -1,0 +1,58 @@
+<project name="swing-explorer-build" default="pack" basedir=".">
+
+  <!-- user-specific properties -->
+  <loadproperties srcFile="${user.home}/.swex/build.properties"/>
+
+  <loadproperties srcFile="build.properties"/>
+
+  <!-- ========================================= -->
+  <!-- Deletes directories created in this build -->
+  <target name="clean">
+
+	<ant antfile="swing-explorer-agent/build.xml" target="clean" useNativeBasedir="true"/>
+	<ant antfile="swing-explorer-core/build.xml" target="clean" useNativeBasedir="true"/>
+    <ant antfile="org.swingexplorer.eclipseplugin/build.xml" target="clean" useNativeBasedir="true"/>
+    <ant antfile="org.swingexplorer.feature/build.xml" target="clean" useNativeBasedir="true"/>
+    <ant antfile="org.swingexplorer.updatesite/build.xml" target="clean" useNativeBasedir="true"/>
+    <ant antfile="swing-explorer-netbeans/build.xml" target="clean" useNativeBasedir="true"/>
+	<ant antfile="swing-explorer-idea/build.xml" target="clean" useNativeBasedir="true"/>
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Creates directories required in build process -->
+  <target name="init">
+	<mkdir dir="${build.dir}"/>
+    <mkdir dir="${classes.dir}"/>
+    <tstamp/>
+  </target>
+
+
+  <!-- ============================================= -->
+  <!-- Packs classes into Jars -->
+  <target name="pack">
+
+	<ant antfile="swing-explorer-agent/build.xml" target="pack" useNativeBasedir="true"/>
+	<ant antfile="swing-explorer-core/build.xml" target="pack" useNativeBasedir="true"/>
+    <ant antfile="org.swingexplorer.eclipseplugin/build.xml" target="pack" useNativeBasedir="true"/>
+    <ant antfile="org.swingexplorer.feature/build.xml" target="pack" useNativeBasedir="true"/>
+    <ant antfile="org.swingexplorer.updatesite/build.xml" target="pack" useNativeBasedir="true"/>
+    <antcall target="packnb" />
+	<ant antfile="swing-explorer-idea/build.xml" target="pack" useNativeBasedir="true"/>
+  </target>
+
+
+  <!-- Packs Netbeans plug-in -->
+  <target name="packnb">
+    <tstamp/>
+
+    <exec executable="ant.bat" dir="swing-explorer-netbeans">
+        <arg value="-Dbuild.version=${build.version}"/>
+        <arg value="-Dstorepass=${keystore.password}" />
+        <arg value="-Dnbm_alias=mykey" />
+        <arg value="-Dkeystore=${user.home}/.swex/swing-explorer.keystore" />
+        <arg value="nbm"/>
+    </exec>
+
+  </target>
+</project>

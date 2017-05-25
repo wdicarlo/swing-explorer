@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.swingexplorer.feature_@version@.jar" id="org.swingexplorer.feature" version="@version@">
+         <category name="IDE Integration"/>
+   </feature>
+   <category-def name="IDE Integration" label="IDE Integration"/>
+</site>

@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.swingexplorer.netbeans
+OpenIDE-Module-Install: org/swingexplorer/install/Installer.class
+OpenIDE-Module-Layer: org/swingexplorer/netbeans/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/swingexplorer/netbeans/Bundle.properties
+OpenIDE-Module-Specification-Version: @version@
+Implementation-version: @version@

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="build/cluster/modules/org-swingexplorer-netbeans.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-apache-tools-ant-module.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-netbeans-api-java-classpath.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-netbeans-api-java.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-netbeans-modules-projectapi.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-actions.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-execution.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-filesystems.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-io.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-loaders.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-modules.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-nodes.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-text.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-util-lookup.jar"/>
+	<classpathentry kind="lib" path="build/public-package-jars/org-openide-util.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
